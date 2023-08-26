@@ -1,0 +1,26 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dummyLabel {
+  margin-top: 10%;
+  box-shadow: 0 4px 8px rgba(241, 223, 223, 0.1);
+}
+form {
+  width: 70%;
+  padding: 2rem;
+}
+
+.actions {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.answerDiv {
+  /* background-color: white; */
+  background-color: rgb(44, 43, 43);
+  margin-bottom: 5%;
+  padding: 2%;
+}
