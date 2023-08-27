@@ -1,5 +1,4 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
-import { type } from "@testing-library/user-event/dist/type";
 
 const formSlice = createSlice({
   name: "formSlice",
@@ -43,12 +42,14 @@ const formSlice = createSlice({
     },
 
     addAnswerText: (state, action) => {
-      const { text, answerIndex, questionId } = action.payload;
-      console.log(text, answerIndex, questionId);
-      const currentAnswer = state.questions[questionId].answers[answerIndex];
-      // console.log(state.questions[questionId].answers);
+      const { text, answerId, questionId } = action.payload;
+      console.log(answerId);
+      // const currentAnswer = state.questions[questionId].answers[answerIndex];
+      const answerIndex = state.questions[questionId].answers.findIndex(
+        (a) => a.answerId === answerId
+      );
 
-      console.log(currentAnswer);
+      state.questions[questionId].answers[answerIndex].answerText = text;
     },
 
     removeAnswer: (state, action) => {

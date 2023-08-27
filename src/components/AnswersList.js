@@ -3,6 +3,7 @@ import Input from "./Input";
 
 const AnswersList = (props) => {
   const answers = props.answers;
+  console.log(answers);
   return (
     <>
       {answers.map((answer, answerIndex) => (
@@ -11,7 +12,7 @@ const AnswersList = (props) => {
           <Input
             placeholder={"Your answer"}
             answerQuote
-            answerIndex={answer.answerId}
+            answerId={answer.answerId}
             questionId={props.questionId}
           />
           <Button

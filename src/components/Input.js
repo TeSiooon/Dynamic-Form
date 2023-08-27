@@ -10,17 +10,18 @@ const Input = (props) => {
   const optionHandler = () => {
     if (props.questionQuote) {
       const questionText = inputRef.current.value;
-      console.log(props.questionId);
+
       dispatch(
         addQuestionText({ questionId: props.questionId, quote: questionText })
       );
     }
     if (props.answerQuote) {
+      console.log(props.answerIndex);
       const answerText = inputRef.current.value;
       dispatch(
         addAnswerText({
           text: answerText,
-          answerIndex: props.answerIndex,
+          answerId: props.answerId,
           questionId: props.questionId,
         })
       );
