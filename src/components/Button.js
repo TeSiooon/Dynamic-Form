@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import styles from "./Button.module.css";
-import { addAnswer, addQuestion, removeAnswer } from "../store";
+import { addAnswer, addQuestion, removeAnswer, removeQuestion } from "../store";
 
 const Button = (props) => {
   const dispatch = useDispatch();
@@ -22,8 +22,11 @@ const Button = (props) => {
     }
 
     if (props.addAnswer) {
-      console.log("dodanie odpowiedzi");
       dispatch(addAnswer({ questionIndex: props.questionId }));
+    }
+
+    if (props.removeQuestion & props.canBeRemoved) {
+      dispatch(removeQuestion({ questionId: props.questionId }));
     }
   };
 

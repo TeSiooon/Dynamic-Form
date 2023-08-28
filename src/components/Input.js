@@ -1,11 +1,12 @@
 import { useDispatch } from "react-redux";
 import styles from "./Input.module.css";
-import { useRef } from "react";
-import { addAnswerText, addQuestionText } from "../store";
+import { useRef, useState } from "react";
+import { addAnswerText, addQuestionText, isCorrect } from "../store";
 
 const Input = (props) => {
   const dispatch = useDispatch();
   const inputRef = useRef("");
+  const [isChecked, setIsChecked] = useState(false);
 
   const optionHandler = () => {
     if (props.questionQuote) {
@@ -16,11 +17,19 @@ const Input = (props) => {
       );
     }
     if (props.answerQuote) {
-      console.log(props.answerIndex);
       const answerText = inputRef.current.value;
       dispatch(
         addAnswerText({
           text: answerText,
+          answerId: props.answerId,
+          questionId: props.questionId,
+        })
+      );
+    }
+    if (props.checkbox) {
+      dispatch(
+        isCorrect({
+          isTrue: isChecked,
           answerId: props.answerId,
           questionId: props.questionId,
         })
@@ -44,6 +53,17 @@ const Input = (props) => {
       <span
         className={`${styles.input_border} ${styles.input_border_alt}`}
       ></span>
+      {props.checkbox && (
+        <>
+          {/* Maybe nowy komponent */}
+          <label>Is this answer the correct one?</label>
+          <input
+            type="checkbox"
+            checked={isChecked}
+            onChange={(e) => (setIsChecked((prev) => !prev), optionHandler(e))}
+          />
+        </>
+      )}
     </div>
   );
 };
