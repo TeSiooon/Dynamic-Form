@@ -25,7 +25,7 @@ const QuestionsList = (props) => {
               red
               removeQuestion
               canBeRemoved={canBeRemoved}
-              questionId={questionIndex}
+              questionId={question.id}
               type={"button"}
             />
           )}
